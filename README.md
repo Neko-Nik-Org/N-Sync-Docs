@@ -1,6 +1,6 @@
-# N-Ops-Docs
+# N-Sync-Docs
 
-Documentation Web For N-Ops Project
+Documentation Web For N-Sync Project
 
 Maintain the following directory structure for the documentation:
 

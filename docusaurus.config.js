@@ -10,9 +10,9 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'N-Ops',
-  tagline: 'Automate your DevOps with N-Ops',
-  favicon: 'img/favicon.svg',
+  title: 'N-Sync',
+  tagline: 'Automate your DevOps with N-Sync',
+  favicon: 'img/favicon.png',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -20,7 +20,7 @@ const config = {
   },
 
   // Set the production url of your site here
-  url: 'https://n-ops.nekonik.org',
+  url: 'https://n-sync.nekonik.org',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -28,7 +28,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'Neko-Nik-Org', // Usually your GitHub org/user name.
-  projectName: 'N-Ops-Docs', // Usually your repo name.
+  projectName: 'N-Sync-Docs', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -81,10 +81,10 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'N-Ops',
+        title: 'N-Sync',
         logo: {
           alt: 'N Ops Logo',
-          src: 'img/favicon.svg',
+          src: 'img/favicon.png',
         },
         items: [
           {
@@ -95,7 +95,7 @@ const config = {
           },
           // {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/Neko-Nik-Org/N-Ops-API',
+            href: 'https://github.com/Neko-Nik-Org/N-Sync-API',
             label: 'GitHub',
             position: 'right',
           },

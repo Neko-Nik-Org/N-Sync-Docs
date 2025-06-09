@@ -4,7 +4,7 @@
  */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-    "name": "n-ops-docs",
+    "name": "n-sync-docs",
 	"compatibility_date": "2025-06-08",
 	"assets": {
 		"directory": "./build"
