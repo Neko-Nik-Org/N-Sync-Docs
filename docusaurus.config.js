@@ -95,7 +95,7 @@ const config = {
           },
           // {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/Neko-Nik-Org/N-Sync-API',
+            href: 'https://github.com/Neko-Nik-Org/N-Sync-Docs',
             label: 'GitHub',
             position: 'right',
           },
