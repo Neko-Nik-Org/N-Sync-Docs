@@ -3,6 +3,7 @@
  * and scoped locally.
  */
 
+/* Hero Banner (Original Docusaurus style) */
 .heroBanner {
   padding: 4rem 0;
   text-align: center;
@@ -10,14 +11,252 @@
   overflow: hidden;
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+/* Custom Hero Section Layout */
+.heroSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  min-height: 400px; /* Increased for better spacing */
+  margin: 0 auto;
+  gap: 2rem;
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.5); /* Subtle white background to match feature rows */
+  backdrop-filter: blur(5px);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(254, 132, 27, 0.08); /* Very subtle shadow */
+}
+
+[data-theme='dark'] .heroSection {
+  background: rgba(20, 20, 20, 0.5); /* Dark subtle background */
+}
+
+/* Left Content Area */
+.leftContent {
+  flex: 1;
+  max-width: 50%;
+  z-index: 2;
+  padding-left: 2rem;
+}
+
+.heroTitle {
+  font-size: 2.8rem; /* Slightly increased size */
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-color-primary);
+  background: linear-gradient(90deg, #fe841b 0%, #c75e10 100%); /* orange-500 to orange-700 */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroSubtitle {
+  font-size: 1.3rem; /* Slightly increased size */
+  margin-bottom: 1rem; /* Reduced to make space for description */
+  color: var(--text-color-primary);
+  line-height: 1.6;
+}
+
+.description {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--text-color-secondary);
+  line-height: 1.5;
+}
+
+.highlight {
+  color: #fe841b; /* orange-500: Primary color */
+  font-weight: 600;
 }
 
 .buttons {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+  margin-top: 1rem;
+}
+
+/* Right Content Area */
+.rightContent {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  max-width: 50%;
+  height: 400px; /* Increased height from 350px to 400px */
+  overflow: visible;
+}
+
+.cardWrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(5%, 20%);
+  transform-origin: bottom right;
+  perspective: 900px;
+  overflow: visible;
+  width: 500px;
+  height: 400px; /* Increased height from 350px to 400px */
+}
+
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 850px; /* Increased height from 200px to 250px */
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(145deg, #fe841b 0%, #a34c0c 100%); /* orange-500 to orange-800 */
+  box-shadow: 0 10px 20px rgba(163, 76, 12, 0.2); /* orange-800 with transparency */
+  padding: 2rem;
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+  color: white;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  transform-origin: center center;
+}
+
+/* Adjust card content for the new dimensions */
+.card h3 {
+  font-size: 1.5rem; /* Increased from 1.3rem to 1.5rem */
+  margin-bottom: 1rem; /* Increased from 0.5rem to 1rem */
+  color: white;
+  margin-top: 0;
+  font-weight: 600;
+}
+
+.card p {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  line-height: 1.5; /* Increased from 1.4 to 1.5 */
+  text-align: center;
+  font-size: 1.1rem; /* Added larger font size */
+}
+
+/* Homepage section styling */
+:global(.homepage-section) {
+  background: linear-gradient(180deg, #ffffff 0%, #f6f8fa 100%);
+  padding: 4rem 0;
+}
+
+:global([data-theme='dark'] .homepage-section) {
+  background: linear-gradient(180deg, #1b1b1d 0%, #0f0f11 100%);
+}
+
+/* Static card for mobile view */
+.staticCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+}
+
+.staticCard .card {
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  min-height: 180px;
+}
+
+/* Improved responsive layout */
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+  
+  .heroSection {
+    flex-direction: column;
+    padding: 2rem 1rem;
+    min-height: auto;
+    text-align: center;
+  }
+
+  .leftContent {
+    max-width: 100%;
+    padding: 0 1rem 2rem;
+  }
+
+  .rightContent {
+    max-width: 100%;
+    margin: 0;
+    height: auto;
+    padding: 0 1rem;
+  }
+
+  .heroTitle {
+    font-size: 2.4rem;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+
+  .cardWrapper {
+    position: relative;
+    transform: translate(0, 0); 
+  }
+}
+
+@media (max-width: 768px) {
+  .cardWrapper {
+    transform: scale(0.75) translate(25%, 25%);
+    width: 400px;
+  }
+  
+  .card {
+    width: 360px;
+    height: 220px; /* Increased from 170px to 220px for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .heroSection {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .heroTitle {
+    font-size: 2.2rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.1rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .staticCard .card {
+    max-width: 280px;
+    min-height: 160px;
+  }
+  
+  .rightContent {
+    height: 320px; /* Increased from 280px to 320px for small mobile screens */
+  }
+  
+  .cardWrapper {
+    transform: scale(0.55) translate(25%, 25%);
+  }
+  
+  .card {
+    width: 320px;
+    height: 500px; /* Increased from 160px to 200px for small screens */
+  }
 }

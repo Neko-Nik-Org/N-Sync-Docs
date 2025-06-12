@@ -1,11 +1,335 @@
-.features {
+/* Layout for the homepage hero */
+.heroSection {
+  display: grid;
+  grid-template-columns: 1.1fr 1.4fr;
+  height: 90vh;
+  min-height: 600px;
+  padding: 2rem 5%;
+  box-sizing: border-box;
+  gap: 2rem;
+  align-items: center;
+}
+
+.leftContent {
+  padding-right: 2rem;
+  z-index: 2;
+}
+
+.rightContent {
+  position: relative;
+  height: 100%;
   display: flex;
   align-items: center;
-  padding: 2rem 0;
+  justify-content: center;
+  z-index: 1;
+  overflow: visible;
+}
+
+.cardWrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(5%, 20%);
+  transform-origin: bottom right;
+  perspective: 900px;
+  overflow: visible;
+}
+
+/* Card container styles */
+.container {
+  position: relative;
   width: 100%;
+  height: 100%;
+  perspective: 900px;
+  overflow: visible;
+}
+
+/* Card styles matching reference design */
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(145deg, #fe841b 0%, #a34c0c 100%); /* orange-500 to orange-800 */
+  box-shadow: 0 10px 30px rgba(163, 76, 12, 0.2); /* orange-800 with transparency */
+  padding: 2rem; /* Increased padding from 1.5rem to 2rem */
+
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card:hover {
+  box-shadow: 0 15px 40px rgba(163, 76, 12, 0.25); /* orange-800 with transparency */
+  border-color: #ffcd91; /* orange-200: Soft highlights */
+}
+
+.card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
+  color: white;
+  font-weight: 600;
+}
+
+.card p {
+  margin: 0;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+}
+
+/* Typography and button section */
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-color-primary);
+  margin-bottom: 1rem;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  color: var(--text-color-secondary);
+  margin-bottom: 2rem;
+}
+
+.buttons {
+  margin-top: 1rem;
+}
+
+/* Features section */
+.features {
+  padding: 4rem 0;
+  width: 100%;
+  background: transparent; /* Make transparent to use the main background */
+}
+
+/* Feature row layout */
+.featureRow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5rem;
+  padding: 1rem;
+}
+
+.featureRow:last-child {
+  margin-bottom: 1rem;
+}
+
+/* Columns */
+.imageColumn, .contentColumn {
+  flex: 1;
+  padding: 1.5rem;
+}
+
+/* Image styling */
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 8px;
+  background-color: rgba(255, 246, 233, 0.8);
+  max-width: 400px; /* Increased from 350px */
+  height: 300px; /* Increased from 250px */
+  margin: 0 auto;
+}
+
+[data-theme='dark'] .imageWrapper {
+  background-color: rgba(20, 20, 20, 0.6);
 }
 
 .featureSvg {
-  height: 200px;
-  width: 200px;
+  height: 250px; /* Increased from 200px */
+  width: 250px; /* Increased from 200px */
+  fill: #fe841b; /* orange-500 */
+  transition: fill 0.3s ease;
+}
+
+/* Content styling */
+.featureContent {
+  padding: 1.5rem;
+  max-width: 500px;
+}
+
+.featureContent h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #a34c0c; /* orange-800 */
+  transition: color 0.3s ease;
+}
+
+.featureContent p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #7e3908; /* orange-900 */
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .featureContent h3 {
+  color: #ffb765; /* orange-300 */
+}
+
+[data-theme='dark'] .featureContent p {
+  color: #ffe3bd; /* orange-100 */
+}
+
+/* spotlight card features */
+.cardSpotlight {
+  position: relative;
+  border-radius: 8px;
+  background-color: transparent;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --spotlight-color: rgba(254, 132, 27, 0.2);
+}
+
+.cardSpotlight::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at var(--mouse-x) var(--mouse-y),
+    var(--spotlight-color),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cardSpotlight:hover::before {
+  opacity: 1;
+}
+
+.cardSpotlight > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .heroSection {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    text-align: center;
+    height: auto;
+  }
+
+  .leftContent,
+  .rightContent {
+    width: 100%;
+    padding: 0;
+  }
+
+  .cardWrapper {
+    transform: scale(0.75) translate(25%, 25%);
+  }
+}
+
+@media (max-width: 480px) {
+  .cardWrapper {
+    transform: scale(0.55) translate(25%, 25%);
+  }
+}
+
+/* Mobile responsive styling */
+@media (max-width: 996px) {
+  .featureRow {
+    flex-direction: column;
+    padding: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .imageColumn, .contentColumn {
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem 0;
+  }
+  
+  /* Always show image first on mobile */
+  .imageColumn {
+    order: 1 !important;
+  }
+  
+  .contentColumn {
+    order: 2 !important;
+  }
+  
+  .imageWrapper {
+    max-width: 300px;
+    height: 240px;
+    padding: 1.5rem;
+  }
+  
+  .featureSvg {
+    height: 180px;
+    width: 180px;
+  }
+  
+  .featureContent {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .features {
+    padding: 2rem 1rem;
+  }
+  
+  .featureRow {
+    padding: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .imageWrapper {
+    max-width: 250px;
+    height: 200px;
+    padding: 1rem;
+  }
+  
+  .featureSvg {
+    height: 150px;
+    width: 150px;
+  }
+  
+  .featureContent h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* More specific fix for smallest screens */
+@media (max-width: 360px) {
+  .imageWrapper {
+    max-width: 220px;
+    height: 180px;
+  }
+  
+  .featureSvg {
+    height: 130px;
+    width: 130px;
+  }
+  
+  .featureContent h3 {
+    font-size: 1.3rem;
+  }
+  
+  .featureContent p {
+    font-size: 1rem;
+  }
 }
