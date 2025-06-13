@@ -19,6 +19,7 @@
         "@docusaurus/preset-classic": "^3.8.1",
         "@mdx-js/react": "^3.0.0",
         "clsx": "^2.0.0",
+        "gsap": "^3.13.0",
         "prism-react-renderer": "^2.3.0",
         "react": "^19.0.0",
         "react-dom": "^19.0.0"
@@ -26,6 +27,7 @@
     "devDependencies": {
         "@docusaurus/module-type-aliases": "^3.8.1",
         "@docusaurus/types": "^3.8.1",
+        "@types/react": "^19.1.8",
         "wrangler": "^4.19.1"
     },
     "browserslist": {
@@ -42,5 +44,6 @@
     },
     "engines": {
         "node": ">=18.0"
-    }
+    },
+    "packageManager": "yarn@4.9.2"
 }

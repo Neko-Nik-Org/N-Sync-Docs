@@ -1,50 +1,79 @@
+import React from 'react';
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
+import SpotlightCard from './SpotLightCard';
 
 const FeatureList = [
   {
     title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    Svg: (props) => <img src={require('@site/static/img/remotesync.png').default} alt="Powerful Automation" {...props} />,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        N-Sync is a simple and intuitive tool that helps you sync files with minimal setup and configuration.
       </>
     ),
   },
   {
     title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+   Svg: (props) => <img src={require('@site/static/img/focus.png').default} alt="Powerful Automation" {...props} />,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+       It automates repetitive sync tasks so you can concentrate on building valuable features.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Powerful Automation',
+    Svg: (props) => <img src={require('@site/static/img/powerful.png').default} alt="Powerful Automation" {...props} />,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        N-Sync supports custom automation pipelines and integrates smoothly with your existing DevOps tools and infrastructure.
       </>
     ),
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({Svg, title, description, index}) {
+  const isEven = index % 2 === 0;
+  
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
-      </div>
+    <div className={styles.featureRow}>
+      {isEven ? (
+        <>
+          <div className={styles.imageColumn}>
+            <SpotlightCard 
+              className={styles.imageWrapper} 
+              spotlightColor="rgba(254, 132, 27, 0.2)"
+            >
+              <Svg className={styles.featureSvg} role="img" />
+            </SpotlightCard>
+          </div>
+          <div className={styles.contentColumn}>
+            <div className={styles.featureContent}>
+              <Heading as="h3">{title}</Heading>
+              <p>{description}</p>
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className={styles.contentColumn}>
+            <div className={styles.featureContent}>
+              <Heading as="h3">{title}</Heading>
+              <p>{description}</p>
+            </div>
+          </div>
+          <div className={styles.imageColumn}>
+            <SpotlightCard 
+              className={styles.imageWrapper}
+              spotlightColor="rgba(254, 132, 27, 0.2)"
+            >
+              <Svg className={styles.featureSvg} role="img" />
+            </SpotlightCard>
+          </div>
+        </>
+      )}
     </div>
   );
 }
@@ -53,11 +82,9 @@ export default function HomepageFeatures() {
   return (
     <section className={styles.features}>
       <div className="container">
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
-        </div>
+        {FeatureList.map((props, idx) => (
+          <Feature key={idx} {...props} index={idx} />
+        ))}
       </div>
     </section>
   );
